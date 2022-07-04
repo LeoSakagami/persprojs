@@ -1,0 +1,114 @@
+def addition(num1,num2):
+    return num1+num2 
+
+def subtraction(num1,num2):
+    return num1-num2
+
+def division(num1,num2):
+    return num1/num2
+
+def multiplication(num1,num2):
+    return num1*num2
+
+def m(Numbers):
+    while '*' in Numbers:
+            Priority=Numbers.index('*')  
+            FirstMultiply = int(Numbers[Priority-1])
+            SecondMultiply = int(Numbers[Priority+1])
+            Numbers[Priority-1]=multiplication(FirstMultiply,SecondMultiply)
+            #print(Numbers[Priority-1])
+            del Numbers[Priority]
+            del Numbers[Priority]
+def d(Numbers):
+    while '/' in Numbers:
+            Priority=Numbers.index('/')
+            FirstDivide= int(Numbers[Priority-1])
+            SecondDivide = int(Numbers[Priority+1])
+            Numbers[Priority-1]=division(FirstDivide,SecondDivide)
+            del Numbers[Priority]
+            del Numbers[Priority]
+def addsubtract(Numbers):
+    FirstNumber = int(Numbers[0]) #print(type(FirstNumber))  # prints type int
+    if len(Numbers)>1:
+            SecondNumber = int(Numbers[2])
+
+            if Numbers[1]=='+':
+                Numbers[0]=addition(FirstNumber,SecondNumber)
+            
+            if Numbers[1]=='-':
+                Numbers[0]=subtraction(FirstNumber,SecondNumber)
+
+            if Numbers[1]=='/':
+                Numbers[0]=division(FirstNumber,SecondNumber)
+
+            if Numbers[1]=='*':
+                Numbers[0]=multiplication(FirstNumber,SecondNumber)
+            del Numbers[1]
+            del Numbers[1]
+                    #V      
+    #FOR PARENTHESIS V
+def main():
+    Input=input("Calculator2 booted, what would you like to do\n")
+    Numbers = Input.split()
+    #if
+    result = Input[Input.find('(')+1:Input.find(')')]
+    
+    Equation=result.split()
+    while len(Equation)>2:
+       
+        #m(Equation)
+        #d(Equation)
+        addsubtract(Equation)
+        
+        num1str = [str(x) for x in Equation]
+        num1s = "".join(num1str)
+        num1=int(num1s)
+
+        Firstparenth = Numbers.index('(')
+        Numbers[Firstparenth+1] = num1
+      
+        del Numbers[Firstparenth+2]
+        del Numbers[Firstparenth+2]
+        del Numbers[Firstparenth+2]
+        del Numbers[Firstparenth]
+     
+
+
+    while len(Numbers)>2:
+      
+        while '*' in Numbers:
+            Priority=Numbers.index('*')  
+            FirstMultiply = int(Numbers[Priority-1])
+            SecondMultiply = int(Numbers[Priority+1])
+            Numbers[Priority-1]=multiplication(FirstMultiply,SecondMultiply)
+            #print(Numbers[Priority-1])
+            del Numbers[Priority]
+            del Numbers[Priority]
+        #print(Numbers)
+        while '/' in Numbers:
+            Priority=Numbers.index('/')
+            FirstDivide= int(Numbers[Priority-1])
+            SecondDivide = int(Numbers[Priority+1])
+            Numbers[Priority-1]=division(FirstDivide,SecondDivide)
+            del Numbers[Priority]
+            del Numbers[Priority]
+
+        FirstNumber = int(Numbers[0]) #print(type(FirstNumber))  # prints type int
+        if len(Numbers)>1:
+            SecondNumber = int(Numbers[2])
+
+            if Numbers[1]=='+':
+                Numbers[0]=addition(FirstNumber,SecondNumber)
+            
+            if Numbers[1]=='-':
+                Numbers[0]=subtraction(FirstNumber,SecondNumber)
+
+            if Numbers[1]=='/':
+                Numbers[0]=division(FirstNumber,SecondNumber)
+
+            if Numbers[1]=='*':
+                Numbers[0]=multiplication(FirstNumber,SecondNumber)
+            del Numbers[1]
+            del Numbers[1]
+    print(Numbers[0])
+main()
