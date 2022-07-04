@@ -1,0 +1,48 @@
+def Main():
+    print("You're An Adventurer! Type 1, 2 or 3 to choose your options")
+    Answer(Input(Sen1, Ans),Ans)
+Ans = ["Fight", 'Run', 'Hide']
+Ans2= ["Keep Fighting", "Run", "Cry"]
+Ans3= ["Backstab the slimes", "Thank them and leave"]
+Ans4= ["Keep hiding", "Try to run", "Crawl away"]
+
+Sen1 = "Go into cave, Ambushed by slimes"
+Sen2 = "Slime acid wounds you and breaks your sword"
+Sen3 = "The slimes looks at you confused and starts to bounce away "
+Sen4 = "The slimes are approaching towards your hiding spot"
+
+def Input(Situation, ListOfAnswers):
+    print(Situation)
+    NumberAnswer=input(ListOfAnswers)
+    print(NumberAnswer)
+    return NumberAnswer
+
+def Answer(Number,ListOfAnswers):
+    if Number=='1':
+        print("You" , ListOfAnswers[0])
+        a=Input(Sen2,Ans2)
+        if a=='1':
+            print("Slime acid is too strong and melts ur body. BAD END")
+        elif a=='2':
+            print("You barely make it out the cave and live to see another day! GOOD END")
+        elif a=='3':
+            b=Input(Sen3,Ans3)
+            if b=='1':
+                print("You killed all the slimes! Good job!, do you feel good about urself? GOOD END?")
+            elif b=='2':
+                print("You make it out the cave eventually and will never forget the kindness of slimes. GOOD END")
+    elif Number=='2': 
+        print("You" , ListOfAnswers[1])
+        print("You trip on a rock and you fall on your sword! You Die! END")
+    elif Number=='3':
+        print("You" , ListOfAnswers[2])
+        c=Input(Sen4 , Ans4)
+        if c=='1':
+            print("The slimes end up finding u eventually and you get beat. END")
+        elif c=='2':
+            print("They're already close enough to catch up to you and melt you. END")
+        elif c=='3':
+            print("You sneakily make it out safely! GOOD END")
+
+
+Main()
